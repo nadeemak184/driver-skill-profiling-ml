@@ -1,0 +1,348 @@
+\documentclass[12pt,letterpaper]{report}
+\usepackage[utf8]{inputenc} 
+\usepackage{newtxtext,newtxmath}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage[
+			backend = biber, 
+			bibencoding = latin1,
+			style = bwl-FU,]
+{biblatex}
+\addbibresource{database/references.bib}
+\usepackage[small]{titlesec}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,arrows}
+\usepackage{blindtext} 
+\newcommand*{\permcomb}[4][0mu]{{{}^{#3}\mkern#1#2_{#4}}}
+\newcommand*{\perm}[1][-3mu]{\permcomb[#1]{P}}
+\newcommand*{\comb}[1][-1mu]{\permcomb[#1]{C}}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{fancyhdr}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{longtable}
+\usepackage{bigstrut}
+\usepackage{adjustbox}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{pdfpages}
+\usepackage{array}
+\usepackage{calc}
+\usepackage[margin=1in]{geometry}
+\setlength{\parindent}{0em}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+\begin{document}
+\begin{titlepage}
+\begin{center}
+\vspace*{0cm}
+\large M.Tech Project Report\\
+\vspace*{0.5cm}
+\textbf{\large "DRIVER SKILL PROFILING"}\\[10pt]
+\vspace{0.3cm}
+by\\ 
+\vspace{0.3cm}
+{\large \bf NADEEM AKHTAR } \\
+\vspace*{0.2cm}
+{\large \bf (Roll No. 212TS023)}\\[.3in]
+{\large MASTER OF TECHNOLOGY\\IN\\TRANSPORTATION ENGNEERING}\\
+                     \vspace{20mm}
+                   {\em  under the guidance of} \\ \vspace{3mm}
+             {\large \bf Dr. MITHUN MOHAN\\Assistant Professor} \\
+\vspace{1cm}         
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.25\linewidth]{NITK.png}
+\end{figure}
+\vfill
+{\bf\large DEPARTMENT OF CIVIL ENGINEERING} \\%[4pt] Uncomment if not applicable (Humanities/Data Science)
+{\bf\large NATIONAL INSTITUTE OF TECHNOLOGY KARNATAKA}\\%[4pt]
+{\bf\large SURATHKAL, MANGALORE-575025}\\%[8pt]
+{\it\large November 2022}
+\end{center}
+\end{titlepage}
+
+\pagenumbering{gobble}
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+
+\newpage
+\thispagestyle{empty}
+\begin{center}
+\emph{\LARGE Certificate}\\[2.5cm]
+\end{center}
+This is to certify that this is a bonafide record of the report presented by \textbf{Mr. Nadeem Akhtar}, completed his project report and submitted satisfactory report for the partial fulfilment of the requirement of the award of degree of \textbf{Master of Technology in Transportation Engineering} in the Department of Civil Engineering of National Institute of Technology Karnataka, Surathkal during the year 2022-2023\\[1.0cm]
+\begin{table}[h]
+\centering
+\begin{tabular}{lr}
+Roll No & Name of Student \\ \\ \hline
+\\
+212TS023 & Nadeem Akhtar \\
+\end{tabular}
+\end{table}
+\vfill
+\textbf{Chairman - DPGC}
+\hfill
+\textbf{Dr. Mithun Mohan}\\
+Department of Civil Engineering
+\hfill
+(Assistant Professor)\\
+
+
+\begin{flushleft}
+Date: 
+\end{flushleft}
+
+
+\newpage
+\thispagestyle{empty}
+
+\begin{center}
+\emph{\LARGE Declaration}\\[2.5cm]
+\end{center}
+I hereby declare that the report of P.G. project works entitled "\textbf{Driver Skill Profiling}" which is being submitted to \textbf{National Institute of Technology Karnataka}, Surathkal, in partial fulfillment of the requirement for the award of degree
+of \textbf{Master of Technology in Transportation Engineering} in the \textbf{Department of Civil
+Engineering}, is a Bonafide report of the work carried out by me. The material contained
+in this report has not been submitted to any university or Institute for the award of any
+degree. 
+\\[1.0cm]
+\vfill
+
+\begin{flushright}
+Nadeem Akhtar \\[1.5cm]
+\end{flushright}
+
+\begin{flushleft}
+Date: 
+\end{flushleft}
+
+\newpage
+\thispagestyle{empty}
+\begin{center}
+\emph{\LARGE Acknowledgement}\\[2.5cm]
+\end{center}
+I would like to express my heartfelt gratitude towards my guide \textbf{Dr. Mithun Mohan}, Assistant Professor, Department of Civil Engineering, for his invaluable
+time, guidance, constant supervision and continuous support throughout the course of
+the preparation of the report. His knowledge and expertise have helped me greatly. It
+was a very good learning experience for me under his guidance. \\
+I am also thankful to
+\textbf{Dr. B.R. Jayalekshmi}, Professor and Head of Department of Civil Engineering, National Institute of Technology Karnataka, for
+providing the necessary support wherever necessary.\\
+I would like to thank \textbf{Dr. Suresha S N}, Assistant Professor and Faculty Advisor, Department of Civil
+Engineering, NIT Karnataka, Surathkal, whose encouragement was a great source of inspiration. I would also like to thank my friends who helped
+me directly or indirectly throughout the journey to accomplish this task.\\[1.0cm]
+\vfill
+
+\begin{flushright}
+Nadeem Akhtar \\[1.5cm]
+\end{flushright}
+
+\begin{flushleft}
+Date: 
+\end{flushleft}
+\chapter*{Abstract}
+    \thispagestyle{empty}
+    This study aims to verify the self-assessment that people make about their driving skills and know how much confidence they are at it. This study will investigate the differences between the perceived level of skill of driver and his/her actual skill level. Knowing one skill level eventually helps in road risk management and prevent major accidents that occurs due to over-estimation of their skills in different traffic scenarios. To this end, driver skill questionnaire is prepared evaluating different driving abilities and also the socio-demographic data has been collected along with it. Different age group of drivers has been targeted to study the behaviour among different age group and co-relation has been found. To measure the actual skill of the driver, sensors of smartphones has been considered in the experiment to collect the input data and decision making algorithm has been identified to evaluate different events performed by the driver while driving. The model generates a quantified result of his/her skill level and drivers are then further classified under different category according to their skill level (safe or unsafe/risky or non-risky drivers).
+\tableofcontents
+\listoffigures
+\listoftables
+\clearpage
+\pagenumbering{arabic}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\chapter{Introduction}
+One of the essential factors that determines road safety is driving skills. A person must have a clear understanding of their strengths and shortcomings and should able to take effective corrective action to reduce their risk of accidents and ensure the safety of other road users as well. A biased opinion of one's abilities could be harmful and could result in a false sense of how to handle emergency situations by taking greater risks. High risk of traffic offences and accidents is frequently associated with underestimating road events. Second illustration is overconfidence among drivers, in which the driver believes their expertise to be higher than it actually is, which may lead to a larger risk tolerance and be hazardous. Questionnaires are one approach for participants to provide information on their driving abilities and road safety, although this method only provides information about the skills the user perceives, not their real abilities. A field experiment may be used to gauge actual skill levels; after that, the data from both experiments can be analysed to determine a driver's competence level. Additionally, we may endeavour to enhance the evaluation of both real and perceived talents.The self-assessment questionnaire may also include inquiries about one's opinions of other drivers and a rating of one's own driving abilities in relation to those of other drivers. Thus, it is crucial for the driver to be aware of his real driving abilities, which are tied to his knowledge of and ability to handle information in various driving scenarios. Furthermore, research has shown that age and gender significantly influence how well people perceive their driving abilities. Studies have revealed that when compared to their peers, young individuals underestimated their driving abilities and rated themselves as less risk-prone. In light of the foregoing, this study suggests a novel method for evaluating driving quality. It does so by creating an overall score that, when scaled using machine learning and deep learning approaches, determines whether a driver is highly talented or not. Utilizing several parameters as input, the data required for the driving competence analysis is gathered using a smartphone. These days, smartphones come with sensors that may be used to gather data from the car. Additionally, the Analytic Hierarchy Process (AHP) is used to determine the weights that should be applied to the many criteria that might be used to generate scores. The qualitative and quantitative approaches are combined in this methodology. According to the overall desired outcome, it divides the problem into several components, which are then grouped into various layers according to their interdependence. The weights of the relevant elements are then calculated using a multilayer structural model.\\
+\section{Objectives}
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
+\begin{itemize}
+\item To find the algorithm to quantify the skill level of driver in terms of score stating the confidence level and driving skill.
+\item To classify the drivers on the basis of score under safe or unsafe drivers. 
+\end{itemize}
+
+\section{Scope of study}
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
+\begin{itemize}
+\item To identify the perceived skills of driver, questionnaire is prepared and distributed among different age groups of drivers who possess legal driving license all over India.
+\item The multi-criteria decision making technique AHP (Analytic Hierarchy Process) is used to determine weightage for different attributes that will be affecting the skill level of driver. 
+\item Based on the output from the scoring algorithm, driver is classified under risky or safe driver. For Classification, we need to identify best suited ML algorithm to fit our conditions. 
+\end{itemize}
+
+\chapter{Literature Review}
+\section{Driver Skill Inventory (DSI) and Driver Behaviour Questionnaire (DBQ)}
+\textbf{\cite{xu2018relationship}} adopted self assessment questionnaire to determine the skill of the driver using Driver Skill Inventory (DSI) for the city in China. Perceptual motor abilities and safety skills are factors that the questionnaire takes into account. While safety skills show a favourable attitude toward driving safely, perceptual motor skills show superior automobile control. These insights also aided in the planning of preventative measures for traffic safety and educational programmes. This study's limitations include the fact that all the data was gathered based on participants' self-perceived levels, which may lead to discrepancies as these levels are easily impacted by social acceptance. The data gathered did not adequately capture the city's population.\\
+
+\textbf{\cite{martinussen2014assessing}} also focused on splitting the problem areas of driving in three categories i.e. actual driving skills, safety attitude and self assessment. Data of drivers with age ranging between 18-84 years with minimum type B driver license in Denmark was collected. Driver Skill Inventory (DSI) questionnaires with demographic information were mailed to participants. Based on competence and safety, participants were divided into four groups: skilled safe drivers, violating unsafe drivers, unskilled unsafe drivers, and unskilled safe drivers. The findings indicated that overconfident traffic offenders had an inaccurate opinion of their driving abilities. The findings of this study support the usefulness of combining intervention techniques to examine the variations in driving behaviour and psychological factors that contribute to accidents. The study's limitations include its reliance on self-reported data. Linking real driving competence with self-reported driving skill is part of the study's future focus.\\
+
+\textbf{\cite{zhang2019assessment}} investigates the connection between a group of bus drivers' driving behaviours and skills and identifies the elements that contribute to bus traffic accidents. The findings demonstrate that safety motivation is highly connected with age and driving experience, and that safety motive has a detrimental effect on infractions. The components of the DBQ and DSI were extracted using an exploratory factor analysis (EFA), and the reliability was assessed using Cronbach's alpha. The associations between the DBQ/DSI, incentives, penalties, and demographic factors were examined using the Pearson correlation coefficient approach.\\
+
+\textbf{\cite{sundstrom2008self}} focused on subjective driving abilities, which were broken down into three distinct categories according to the technique. In two of the categories, one's ability is evaluated by comparing it with internal standards, such as the average driver. In the third domain, subjective skill is assessed by comparing it with the objective criteria, or the real skill, to ascertain an accurate assessment of their own competence. When participants are asked to compare their competence with that of an average driver, biassed evaluation occurs because people tend to think that they are more skilled than other drivers. To overcome these issues, participants were asked to score the strong and poor aspects of their driving abilities rather than to compare their abilities with those of the typical driver. The findings indicated that compared to male drivers, female drivers were more cautious attitude to driving  and had lower levels of self-confidence. While male drivers acknowledged the hazards associated with their irresponsible driving behaviours, they assessed the risks associated with the state of the roads as low and were more confident in their own abilities than female drivers.\\
+
+\textbf{\cite{bener2006effect}} described how using a phone while driving affected the drivers' self-reported driving abilities and style. It was shown that 73.2 percent of the drivers involved in accidents used a cell phone, and among them, teenage drivers were considered to be a high risk category. Additionally, it has been shown that mobile phone users who are driving often disregard traffic signs and regulations.\\
+
+\section{Overconfidence among drivers affecting the skill level}
+\textbf{\cite{moharrer2011actual}} worked on developing new method to assess the over confidence among drivers. He emphasised the problems with earlier research that tried to figure out why drivers had an attitude of overconfidence. The first problem was the use of a questionnaire that only provided a subjective or perceived assessment of a driver's performance. The second problem is the phrase "baseline driver" or "average driver" that is used in the questionnaire and against which the participants are supposed to assess their performance. The problem was the vagueness in the definition of the average driver, which can also be referred to as the median, mean, or mode driver depending on the context. According to their own view, the majority of drivers believe they are better drivers than the average person, which muddies the results of the study. To address these issues, he developed a more focused questionnaire that asks participants to rank themselves among all the social motivations. Driving simulators that employed "Reacton Time" as the element to quantify competence were used to ascertain the driver's true skill level. Additionally, participants were asked to assess their own brake reaction time on a scale of 1 to 5. The simulator evaluated the participant's ability to drive around curves, overtake other vehicles, follow another vehicle, and perceive hazards.\\
+
+The role of overconfidence, driver aggressiveness, and risk perception on performance and the number of self-reported active accidents was examined by  \textbf{\cite{mohammadpour2021aggressive}} on Iranian professional bus drivers. The results of mediation analysis and structural equation modelling (SEM) showed that driving aggressively is influenced by overconfidence through aggressive thoughts while driving. Furthermore, overconfidence reduced a person's ability to perceive danger and act safely while driving, both of which were linked to a greater rate of driver collisions.
+
+
+\section{Effect of change in weather on driver's behaviour and skill}
+Using a questionnaire, \textbf{\cite{bakhshi2022evaluating}} assessed drivers' behaviour in dry and wet weather. The inclination to drive at high speeds while breaking the law is one of the driving behaviours that is most impacted by rain. Drivers may prefer to avoid speeding and try to drive more cautiously because of changes in the nature of the driving environment and the increased obstacles offered by the rain. Aging would reduce drivers' tendency to drive aggressively and in violation of the law. In dry weather, married drivers are less likely than single drivers to speed or break the law, but they are also less likely to do so when it is raining. Highly experienced drivers are more likely to have driven in a variety of weather and road conditions, including in the rain, and are more cognizant of the possible risks they may encounter. As a result, they are more likely to minimise their aggressive behaviours. The aggressive driving behaviours of the drivers decreased as their educational status rose.\\
+
+\textbf{\cite{kilpelainen2007effects}} prepared the questionnaire where drivers provided their opinions on the weather, their driving behaviour, how they learned about the weather before their trip, and whether or not they changed their original travel plans. The apparent underrepresentation of leisure trips during forecasts for extremely bad driving conditions indicates that some trips are cancelled as a result of bad weather or projections for it. The findings imply that visible conditions, not traffic weather forecasts, are what most significantly influence on-road driving behaviour.
+
+\section{Use of instrumented vehicle to evaluate driving skill}
+\textbf{\cite{amado2014accurately}} did the observational study on how accurately driver evaluate their driving skills. Through the use of an instrumented car where the participants were given information on the driving route and the various types of roads, they worked to determine the true competency of the driver. Additionally, two instructors who were carrying observation forms were present during the experiment to gather data. Participants are also required to complete a driving self-evaluation questionnaire at the end. According to the study, most drivers give themselves an overly good evaluation of their driving skills, which suggests that they are not as self-aware as they should be. The focus of the paper was on controlling traffic safety by offering additional feedback systems to alert drivers to mistakes and violations. Additionally, the training's feedback sessions further guaranteed a more accurate self-perception of one's driving abilities. The existence of unnatural behaviour of drivers while they are being observed during the on-road trial, which causes them to drive more cautiously, might be a limitation in this study. Therefore, there may be a slight possibility of data ambiguity.\\
+
+
+To investigate the real-time characterization of driver steering behaviour, \textbf{\cite{best2019real}} presented the steering model. He used a motion simulator to illustrate the driver's degree of expertise and characterise his driving style. On a driving simulator, \textbf{\cite{ahirwal2019assessment}} looked at how Indian adults aged between 20 and 40 performed. The driving simulator's numerical scoring system is used to quantify an individual's performance. Since English was the driving simulator's default language, several adults struggled to perform because of language barriers. As a result of their difficulty understanding the instructions and persistent anxiety about being seen while driving, several people were also unable to perform adequately.\\
+
+\section{Use of smartphone to study the driver behaviour}
+\textbf{\cite{castignani2015driver}} developed an android application 'Sensefleet' that makes use of the built-in sensors and GPS of smartphones for driver behaviour profiling and identified different attributes, such as accelerating, braking, turning, and exceeding the speed limit. It was designed to ascertain how drivers behaved in dangerous driving situations and then classify them as either aggressive or calm drivers. The application included fuzzy logic algorithm for event detection. The application generates scores that reflects the overall performance of the driver. It will also allow to monitor the road network and identify the high cluster region. 
+\textbf{\cite{vavouranakis2017recognizing}} demonstrated that it is possible to predict driver behaviour using data from the smartphone's accelerometer, geomagnetic field sensor, and gyroscope, which provide information on acceleration and orientation. These data were used by the programme to alert the driver of any harsh braking or other unsafe driving behaviours so that an accident may be avoided.\\
+
+
+\section{Use of Machine Learning to predict the driver behaviour and classify their skills}
+With the use of machine learning, \textbf{\cite{subramanianintelligent} 2019} developed a method for detecting the driver's driving style and evaluating it in accordance with a pre-established set of rules for what they referred to as the driver's "test phase." The driver is then placed into one of the two categories of Good or Bad by applying the evaluated outcomes as either an increment or a decrement on a gradient scale ranging from 0 to 100, termed Score. If the driver is classified as having a poor driving pattern, he is given guidance on how to improve his driving, which is referred to as the Improving phase. The system stays in the Test phase until it detects any change, just as if the driver enters Good. Additionally, the system continually decides the phases and actions by using the Markov Decision Process (MDP) algorithm and fuzzy logic algorithm while learning about the driving behaviour. Thus, it improves everyone's level of driving proficiency, generating better drivers who avoid accidents and significantly lessen traffic congestion.\\
+
+Using sensor data from a driving simulator experiment, \textbf{\cite{chandrasiri2012driving}} evaluated the driving ability in terms of longitudinal and lateral movement. They adopted MAchine Learning and the classifier used was K-Nearest Neighbor (KNN) and Support Vector Machine (SVM). In comparison to the KNN, the SVM classifier has improved accuracy. Considerations have been made for characteristics like steering angle, speed, longitudinal acceleration, lateral acceleration, yaw rate, etc. The investigation took into account 10 characteristics using Principal Component Analysis (PCA). Different characteristics were contrasted in the complete curve and segmented curve scenarios. Using SVM, accuracy of 93.9 percent was achieved in the entire curve case and 85 percent in the segmented case.\\
+
+Through the use of instantaneous data gathered from the On Board Diagnostics (OBD) device installed in the automobile, \textbf{\cite{malik2021driving}}  studied the driving styles of various drivers and categorise diverse driving patterns employing Deep Learning. The engine's various components are monitored via OBD, and data may be gathered using a smartphone and bluetooth. To understand the driving behaviour in light of various variables, a variety of techniques like hierarchical clustering, k-means clustering, multinomial naive bays, and artificial neural networks have been used. A model that can categorise incoming input into different categories and precisely identify different driving patterns was developed and presented using the Inter-Class-ReLU, which was utilised to produce activation functions for the generation of logical neurons.\\ 
+
+\textbf{\cite{zhang2010pattern}} looked at the correlation between driver behaviour data and driving ability levels. This connection is represented as a mapping, whose inputs include measures of the driver's behaviour, such steering control, and the driving environment, like the location in relation to the lane and the volume of traffic. Driving skill level is the mapping's output, and it can be category (high, average, and poor) or numerical (rating from 1 to 10). In the realm of pattern recognition, this mapping is known as a recognizer. Multilayer perception artificial neural networks (MLP-ANNs), decision trees, and support vector machines have all been used to create the recognizer (SVMs).\\
+
+Utilizing the optimum route method and Bayesian classification, \textbf{\cite{eren2012estimating}} looked at whether driving behaviour was safe or risky. Steering wheel angle, acceleration, slowing down, and lane change data have been collected using the iPhone's accelerometer, gyroscope, and magnetometer sensors. End point detection method was utilised to detect unsafe driving from the behaviour of the driver. The ideal path between the template event and the input driving data was calculated using dynamic temporal warping (DTW). The results of trials using Bayesian classification revealed that 14 out of 15 drivers had their event type and safe/unsafe driving behaviour correctly identified.
+
+\section{Summary of the Literature Review}
+We have seen that the Driver Skill Inventory (DSI) has been used to study drivers' perceived ability levels, but we've also seen that these questionnaires doesn't accurately reflect drivers' skill levels, necessitating the requirement for actual skill assessments. Utilizing an instrumented car with sensors, which records the driver's actions and generates a quantifiable value as a driver's skill level, it is possible to assess actual skill. Overconfidence, when the driver believed they were more skilled than they actually were, appears to be a factor in determining the competence level of the driver. This may compromise with road safety and can become one of the factors in traffic accidents. Drivers must be aware of their current skill level so that they can receive the necessary education to advance their safety abilities.  studies choose to assess driver behaviour using low-cost smartphones rather than instrumented vehicles. They used the sensors and GPS in smartphones to measure numerous characteristics, such as the acceleration and speed profile of diverse drivers. Different machine learning algorithms have been used to evaluate the level of driving expertise and distinguished them between safe and risky drivers.  
+
+
+\chapter{Methodology}
+\section{General Overview}
+\noindent\fbox{%
+    \parbox{\textwidth}{
+        \textit{Firstly}, we need to prepare the questionnaire covering positive or negative attitude of the driver towards different factors like speed factor, weather factor, brake factor, turn factor and acceleration factor and then determine the weights for each factor using Analytical Hierarchical Process (AHP). We can then generate the empirical formula for skill level with score ranging from 0 (worst driver) to 100 (best driver).
+    }
+}
+\begin{center}
+$\downarrow$
+\end{center}
+
+\noindent\fbox{
+    \parbox{\textwidth}{
+\textit{Secondly}, we will determine the range of safe value for different attributes like linear acceleration, linear deceleration, left turn acceleration, right turn acceleration. Then we can determine the value of hard acceleration, hard deceleration, sharp left turn and sharp right turn.
+}
+}
+\begin{center}
+$\downarrow$
+\end{center}
+
+
+
+ \noindent\fbox{
+    \parbox{\textwidth}{
+To perform the second part, we will do the on-road experiment taking 15-20 participants and make them drive through a specified route during off-peak hours and at different days. We will collect the speed profile of the vehicle and use that to determine different attributes values. In our case, we will be using GPS and sensors equipped in iPhone containing LIS331DL chip manufactured by STMicroelectronics. We can utilise the accelerometer, magnetometer and gyroscope of iphone to get the roll, pitch and yaw values. For same we will be writing the accelerometer application using Xcode 14 meant for developers for all apple platforms.
+}
+}
+\begin{center}
+$\downarrow$
+\end{center}
+
+
+ \noindent\fbox{
+    \parbox{\textwidth}{
+\textit{Thirdly}, we will make use of the Machine Learning algorithm like Decision tree and Support Vector Machine (SVM) algorithm to identify the events while driving like sharp turn or abrupt change in acceleration or continuous brakes. The algorithm will assign different skill values to each events at the end.
+}
+}
+
+\begin{center}
+$\downarrow$
+\end{center}
+ \noindent\fbox{
+    \parbox{\textwidth}{
+\textit{Finally}, the skill values obtained for each attributes is then passed on to final scoring algorithm generated through AHP.
+}
+}
+\chapter{Data Collection}
+\section{Priliminary Driver Skill Questionnaire}
+\begin{longtable}{|l|}
+\hline
+In the rainy situation, I drive cautiously                                                                                                                                                                        \\ \hline
+\endfirsthead
+%
+\endhead
+%
+In the rainy situation, I can drive well on waterlogged roads                                                                                                                                                     \\ \hline
+In the rainy situation, I am always ready to react to unexpected maneuvers by other drivers                                                                                                                       \\ \hline
+\begin{tabular}[c]{@{}l@{}}In the rainy situation, at an intersection where I have to give right-of-way to oncoming traffic, \\ I wait patiently for cross-traffic to pass\end{tabular}                           \\ \hline
+My vehicle doesn't breakdown while maneuvring in bumper to bumper traffic                                                                                                                                         \\ \hline
+On turning left, I look for cyclist or a person who may come up on my side                                                                                                                                        \\ \hline
+\begin{tabular}[c]{@{}l@{}}I get distracted or preoccupied and realize belatedly that the vehicle ahead has slowed\\ and in that situation i can slam on the brakes immediately to avoid a collision\end{tabular} \\ \hline
+I am fluent in changing lanes in heavy traffic                                                                                                                                                                    \\ \hline
+I follow the speed limits late at night or very early in the morning                                                                                                                                              \\ \hline
+I can judge the speed of oncoming vehicle when overtaking                                                                                                                                                         \\ \hline
+\begin{tabular}[c]{@{}l@{}}I failed to notice someone coming out from behind a parked vehicle and suddenly applies\\ brake without getting hit\end{tabular}                                                      \\ \hline
+I can reverse my vehicle in a tight parking space                                                                                                                                                                 \\ \hline
+I check for weather and traffic conditions before starting the trip                                                                                                                                               \\ \hline
+I don't get impatient while driving behind a slow vehicle                                                                                                                                                         \\ \hline
+I always keep sufficient following distance with other vehicle                                                                                                                                                    \\ \hline
+I do not involve in unnecessary race competition with other vehicles                                                                                                                                              \\ \hline
+I calmly tolerate other driver's blunder in traffic                                                                                                                                                               \\ \hline
+I can control my vehicle on slippery road without getting it skid                                                                                                                                                 \\ \hline
+I can drive in foreign city with different traffic as compared to my city                                                                                                                                         \\ \hline
+I always pay attention to other road users while driving                                                                                                                                                          \\ \hline
+I only drive fast when necesary otherwise i keep my speed within speed limit                                                                                                                                      \\ \hline
+I can adjust the speed of my vehicle according to traffic condition                                                                                                                                               \\ \hline
+I always follow the traffic lights signal                                                                                                                                                                         \\ \hline
+I park my vehicle only at legal places                                                                                                                                                                            \\ \hline
+\caption{Driver skill questionnaire}
+\label{tab:my-table}\\
+\end{longtable}
+
+Drivers are asked to rate how strong or weak they feel they are in each given skill in the questionnaire.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Trait} & \textbf{Grade} \\ \hline
+Outstanding    & 10             \\ \hline
+Excellent      & 9              \\ \hline
+Very Good      & 8              \\ \hline
+Good           & 7              \\ \hline
+Roughly Good   & 6              \\ \hline
+Satisfactory   & 5              \\ \hline
+Average        & 4              \\ \hline
+Below Average  & 3              \\ \hline
+Poor           & 2              \\ \hline
+Very Poor      & 1              \\ \hline
+\end{tabular}
+\caption{Trait grading for questionnaire}
+\end{table}
+
+\newpage
+\printbibliography
+
+
+
+\end{document} 
+
